@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Check } from './App';
+import { BrowserRouter } from "react-router-dom";
 import { VerificationContextProvider } from './koo_app/components/Context/verificationContextProvider'
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <App /> */}
     <VerificationContextProvider>
+    <BrowserRouter>
        <Check />
+    </BrowserRouter>
     </VerificationContextProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -2,6 +2,7 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { useEffect, useState } from "react";
+import {Link } from 'react-router-dom';
 import axios from "axios"
 import './utiltiyStyle.css';
 
@@ -89,7 +90,7 @@ export const UserProfile=()=>{
         <div className="user-main-div">
             <div className="user-avatar">
                 <img src={user.profilePic} />
-                <span className="edit-div">Edit Profile</span>
+                <span className="edit-div"><Link to='/editProfile/id'>Edit Profile</Link></span>
             </div>
             <div className="details">
             <h3 className="userId">{user.name}</h3>
