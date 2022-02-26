@@ -1,0 +1,16 @@
+.koo-posted-div{
+    border:solid rgb(163, 163, 163) 1px;
+    height:25vh;
+    width:20vw;
+    margin: 20vh auto;
+    border-radius:10px;
+}
+.koo-posted-div> h2{
+    text-align:center;
+    color:rgb(90, 90, 90);
+
+}
+.koo-posted-div>img{
+    margin-left:40%;
+
+}

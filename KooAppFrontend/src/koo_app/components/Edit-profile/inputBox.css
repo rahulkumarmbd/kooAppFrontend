@@ -1,0 +1,70 @@
+.SectionComponent {
+  position: fixed;
+  bottom: 0px;
+  width: 50%;
+  left: 25%;
+  background-color: white;
+  padding-top: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.section input {
+  width: 100%;
+  padding: 13px 15px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  outline: none;
+  border: 1px solid #e8e8e3;
+  font-size: 100%;
+  line-height: 1.15;
+}
+.section {
+  margin-bottom: 30px;
+  padding: 0px 15px;
+}
+.InputBox {
+  height: 100vh;
+  display: none;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  left: 0;
+  top: 0;
+}
+.section > div:first-child {
+  padding: 20px 0px;
+  font-size: 14px;
+}
+.SectionComponent > div:first-child {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SectionComponent button {
+  width: 100%;
+  padding: 16px 15px;
+  font-size: 18px;
+  font-weight: 500;
+  box-sizing: border-box;
+  background-color: rgb(128, 155, 157);
+  color: white;
+  border: none;
+  margin-top: 0.5em;
+}
+.crossSign > div {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.crossSign{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    transform: translateY(-18px);
+}
+.crossSign img {
+  width: 100%;
+}

@@ -1,0 +1,118 @@
+.main-div {
+  border: 1px solid rgb(209, 208, 208);
+  width: 85%;
+  margin:auto;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  background-color: rgb(249,247,242);
+  position: relative;
+  top:-1.8rem;
+}
+.main-div > .hashtag-heading p {
+  line-height: 22px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 0.8rem;
+}
+.main-div > .body-tags{
+    height: 4.5rem;
+    border-bottom: rgb(209, 208, 208) solid 1px;
+}
+.main-div > .body-tags:hover{
+    background-color:rgb(241,240,238);
+}
+.main-div > .body-tags > .tagname > .title {
+  font-size: 1rem;
+  color: rgb(31, 99, 188);
+  font-weight: bold;
+}
+.main-div > .body-tags > .tagname {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  position: relative;
+  height: 3.3rem;
+  top: -15px;
+}
+.addbutton {
+  border: 1px solid rgb(100, 100, 100);
+  display: inline-block;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  position: relative;
+  top: 15px;
+}
+.addbutton > h3 {
+  position: relative;
+  top: -18px;
+  right: -7px;
+}
+.images {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  top: -40px;
+  left: 10px;
+  padding-bottom: 5px;
+}
+.about-section{
+    font-family: sans-serif;
+    color: #808080;
+    font-size: 0.9rem;
+    font-weight: normal;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 19.5vw;
+    margin:1vw auto;
+}
+.about-section>span{
+    margin: 0.2rem 0.2rem;
+}
+
+/* ///// userProfile components css //// */
+.user-main-div{
+    border: 1px solid rgb(230, 227, 227);
+    position: absolute;
+    top:5rem;
+    background-color: rgb(255, 255, 255);
+    width: 53.5vw;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-left: 20.5vw;
+}
+.user-avatar{
+    display: flex;
+    width:14vw;
+    justify-content:space-between;
+}
+.user-avatar>img{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+}
+.user-avatar>span{
+    /* width: 4rem; */
+    height: 1.5rem;
+    border-radius: 50px;
+    text-align: center;
+    padding:3px 10px 0px 10px;
+    margin-top:9%;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: rgb(128,154,156);
+}
+.other-details>p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    color: rgb(97, 97, 97);
+}
+.followers{
+    display:flex;
+    width:80%;
+    justify-content: space-between;
+}
+.left-img{
+    position:absolute;
+}
