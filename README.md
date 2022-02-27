@@ -53,7 +53,7 @@ You will also find millions of others from all walks of life. Koo is home to the
 
 4. My Profile
 
-<img src="![image](https://user-images.githubusercontent.com/93472360/155887355-e3f43285-1ef4-4269-9124-13dbb711c65f.png)"/>
+<img src="https://user-images.githubusercontent.com/93472360/155887355-e3f43285-1ef4-4269-9124-13dbb711c65f.png"/>
 
 <hr/>
 
