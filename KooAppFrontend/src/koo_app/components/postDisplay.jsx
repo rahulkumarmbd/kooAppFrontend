@@ -18,7 +18,7 @@ export default function RecipeReviewCard() {
   
   useEffect(() => {
     axios.get("https://kooappclone.herokuapp.com/posts").then(({ data }) => {
-      setPosts(data);
+      setPosts(data.reverse());
     });
   }, [posts]);
 

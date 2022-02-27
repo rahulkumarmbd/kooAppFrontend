@@ -16,7 +16,7 @@ export const Feedbox = () => {
                         <img src={whitelogo} alt="" />
                     </div>
                     <div className="options">
-                        <button className="btn">Go To Feed</button>
+                        <Link to="/login"><button className="btn">Go To Feed</button></Link>
                     </div>
                 </Link>
                     <div className="links">

@@ -2,8 +2,10 @@ import "./leftnav.css";
 import * as React from "react";
 import { IconChip } from "./styledComp.jsx";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export const LeftNav = () => {
+  const {IsAuth,User} = useSelector((store) => store);
   return (
     <div className="leftnav">
         <div className="logo">
@@ -12,7 +14,7 @@ export const LeftNav = () => {
       <Link to="/feed">
         <IconChip icon={"/assets/images/homeactive.svg"} tag="Home" />
       </Link>
-      <Link to="/profile/id">
+      <Link to={`/profile/${User}`}>
         <IconChip icon={"/assets/images/koo-avatar.svg"} tag="Profile" />
       </Link>
 

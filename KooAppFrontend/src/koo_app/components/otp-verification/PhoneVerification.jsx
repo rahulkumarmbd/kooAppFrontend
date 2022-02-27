@@ -37,7 +37,7 @@ export const PhoneVerificationPopup = () =>{
             }).then((resp) =>{
                 setOtp(resp.data.otp);
                 handleCredData(number)
-                handleCred("Phone Number")
+                handleCred("mobileNum")
                 handleCheckOtp(true)
             }) 
         }

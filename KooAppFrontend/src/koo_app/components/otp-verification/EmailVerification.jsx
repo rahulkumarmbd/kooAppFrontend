@@ -16,15 +16,17 @@ export function EmailVerificationPopup(){
         handleCred,
         handleCredData,
         handleCheckOtp,
-        handleOtp
+        setOtp
       } = useContext(VerificationContext);
-    const handleEmailOtp = () =>{
+    const handleEmailOtp = () => {
+        console.log("working")
         axios.post("https://kooappclone.herokuapp.com/gmailotp",{
                 email: email
             }).then((resp) =>{
-                handleOtp(resp.data.otp);
+                console.log(resp);
+                setOtp(resp.data.otp);
                 handleCredData(email)
-                handleCred(email)
+                handleCred("email")
                 handleCheckOtp(true)
             })
     }
@@ -51,7 +53,7 @@ export function EmailVerificationPopup(){
             <button
                disabled = {!btnVerify}
                style={email ? {marginTop: "2.5rem"} : { marginTop: "7.5rem" }} 
-               onClick = {() => handleEmailOtp}
+               onClick = {() => handleEmailOtp()}
                className='sendBtn'>Send OTP</button>
         </div>
     )

@@ -1,13 +1,19 @@
 import "./Edit-profile.css";
 import { InputBox } from "./inputBox";
 import { InputBox2 } from "./inputBox2";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Input } from "./input";
+import { useSelector } from "react-redux";
+import { useNavigate,Navigate } from "react-router-dom";
+import axios from "axios";
 
 export function EditProfile() {
   const showComponent = useRef();
   const showComponent2 = useRef();
   const showInput = useRef([]);
+  const [user, setUser] = useState({});
+  const { IsAuth, User } = useSelector((store) => store);
+  const navigate = useNavigate();
 
   const handleInput = (i) => {
     showInput.current[i].style.display = "block";
@@ -21,56 +27,77 @@ export function EditProfile() {
     showComponent2.current.style.display = "block";
   };
 
+  useEffect(() => {
+    axios
+      .get(`https://kooappclone.herokuapp.com/users/${User}`)
+      .then(({ data }) => {
+        setUser(data);
+      });
+  }, []);
+
   const userData = [
     {
       text1: "Name",
-      text2: "guest_UUFMK",
+      text2: user.name == "null" ? "guest_UUFMK" : user.name,
       img: "/assets/editProfileImages/svgexport-1.svg",
+      name: "name",
     },
     {
       text1: "Handle",
-      text2: "guest_UUFMK",
+      text2: user.handle == "null" ? "guest_UUFMK" : user.handle,
       img: "/assets/editProfileImages/svgexport-2.svg",
+      name: "handle",
     },
     {
       text1: "Profession",
-      text2: "Profession",
+      text2: user.profession == "null" ? "Profession" : user.profession,
       img: "/assets/editProfileImages/svgexport-3.svg",
+      name: "profession",
     },
     {
       text1: "Bio",
-      text2: "Koo Your Opinion!",
+      text2: user.bio == "null" ? "Koo Your opinion!" : user.bio,
       img: "/assets/editProfileImages/svgexport-4.svg",
+      name: "bio",
     },
     {
       text1: "Website",
-      text2: "https://www.kooapp.com/profile/guest_UUFMK",
+      text2: user.website == "null" ? "your website" : user.website,
       img: "/assets/editProfileImages/svgexport-5.svg",
+      name: "website",
     },
     {
       text1: "Mobile",
-      text2: "Enter Phone",
+      text2: user.mobileNum == "null" ? "Enter Phone" : user.mobileNum,
       img: "/assets/editProfileImages/svgexport-6.svg",
+      name: "mobileNum",
     },
     {
-      text1: "1",
-      text2: "eg.:username@gmail.com",
+      text1: "email",
+      text2: user.email == "null" ? "eg.:username@gmail.com" : user.email,
       img: "/assets/editProfileImages/svgexport-7.svg",
+      name: "email",
     },
     {
       text1: "Date of Birth",
-      text2: "mm/dd/yyyy",
+      text2: user.dateOfBirth == "null" ? "mm/dd/yyyy" : user.dateOfBirth,
       img: "/assets/editProfileImages/svgexport-8.svg",
+      name: "dateOfBirth",
     },
     {
       text1: "Gender",
-      text2: "Select Your Gender",
+      text2: user.gender == "null" ? "Select Your Gender" : user.gender,
       img: "/assets/editProfileImages/userIcon.svg",
+      name: "gender",
     },
     {
       text1: "Marital Status",
-      text2: "Select Your Marital Status",
+      text2:
+        user.maritalStatus == "null"
+          ? "Select Your Marital Status"
+          : user.maritalStatus,
       img: "/assets/editProfileImages/userIcon-1.svg",
+      name: "maritalStatus",
     },
   ];
 
@@ -86,11 +113,16 @@ export function EditProfile() {
       img: "/assets/editProfileImages/svgexport-3.svg",
     },
   ];
+
+  if(!IsAuth){
+    return <Navigate to="/"/>
+  }
+
   return (
     <div>
       <div className="container">
         <div className="topDiv">
-          <button>
+          <button onClick={() => navigate(-1)}>
             <img src="/assets/images/back.svg" />
           </button>
           <p>Edit Profile</p>
@@ -98,7 +130,7 @@ export function EditProfile() {
         <div className="editprofileDiv">
           <div className="headerDiv">
             <div className="profilePicDiv">
-              <img src="/assets/editProfileImages/img.svg" />
+              <img src={user.profilePic} />
             </div>
             <div className="nameDiv">
               <p>guest_UUFMK</p>
@@ -141,6 +173,8 @@ export function EditProfile() {
             text1={item.text1}
             text2={item.text2}
             i={i}
+            name={item.name}
+            setUser={setUser}
           />
         );
       })}
