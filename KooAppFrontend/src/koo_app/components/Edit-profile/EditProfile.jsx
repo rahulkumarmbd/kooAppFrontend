@@ -13,7 +13,7 @@ export function EditProfile() {
   const showComponent2 = useRef();
   const showInput = useRef([]);
   const [user, setUser] = useState({});
-  const [selectedImage, setSelectedImage] = useState([]);
+  const image=useRef()
   const { IsAuth, User } = useSelector((store) => store);
   const navigate = useNavigate();
   const [newPic, setNewPic] = useState(false);
@@ -30,7 +30,6 @@ export function EditProfile() {
     showComponent2.current.style.display = "block";
   };
 
-  console.log("above useefect", selectedImage);
   useEffect(() => {
   
     axios
@@ -42,7 +41,7 @@ export function EditProfile() {
 
   function postData() {
     var formData = new FormData();
-    formData.append("profilePic", selectedImage);
+    formData.append("profilePic", image.current);
     axios
       .patch(`https://kooappclone.herokuapp.com/users/${User}`, formData, {
         headers: {
@@ -159,7 +158,7 @@ export function EditProfile() {
                   type="file"
                   id="upload-btn"
                   onChange={(event) => {
-                    setSelectedImage(event.target.files[0]);
+                    image.current=event.target.files[0]
                     postData();
                   }}
                   style={{ display: "none" }}

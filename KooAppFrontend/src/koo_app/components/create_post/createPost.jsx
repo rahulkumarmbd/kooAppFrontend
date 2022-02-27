@@ -27,8 +27,7 @@ export const CreatePost = () => {
       })
       .then((res) => {
         setLoading(true);
-        console.log("Your data is posted", res);
-        setPosted(true);
+          setPosted(true);  
       })
       .catch((err) => console.log(err));
   };
