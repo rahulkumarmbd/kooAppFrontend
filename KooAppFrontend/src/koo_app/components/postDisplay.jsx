@@ -10,12 +10,14 @@ import { red } from "@mui/material/colors";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {ThreeDots} from './utilityComp.jsx'
+import {useSelector} from 'react-redux'
+import {Navigate} from 'react-router-dom'
 
 export default function RecipeReviewCard() {
   const [posts, setPosts] = useState([]);
   // Toggling Like and Dislike by below state
   const [toggleLike, setToggleLike] = useState(false); 
-  
+  const { IsAuth, User } = useSelector((store) => store);
   useEffect(() => {
     axios.get("https://kooappclone.herokuapp.com/posts").then(({ data }) => {
       setPosts(data.reverse());
@@ -26,10 +28,12 @@ export default function RecipeReviewCard() {
     likeHandle(like, id)
   },[])
 
-  async function likeHandle(like,id){
+async function likeHandle(like,id){
     await axios.patch(`https://kooappclone.herokuapp.com/posts/${id}`,{likes: toggleLike && like>0? --like:++like}).then(setToggleLike(!toggleLike))
   }
-  
+  if (!IsAuth) {
+    return <Navigate to="/login" />;
+  }
   return (
     <div>
       {posts.length
@@ -54,16 +58,16 @@ export default function RecipeReviewCard() {
                     >
                       <img
                         height="50px"
-                        src={post.userId.profilePic}
+                        src={post.userId.profilePic || 'https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg'}
                         alt="userImage"
                       />
                     </Avatar>
                   }
-                  title={post.userId.name}
+                  title={post.userId.name != "null" ? post.userId.name : "New User"}
                   subheader={`@${
-                    post.userId.handle != null ? post.userId.handle : "username"
-                  } - ${
-                    post.userId.profession != null ? post.userId.profession : ""
+                    post.userId.handle != "null" ? post.userId.handle : "username"
+                  }  ${
+                    post.userId.profession != "null" ? post.userId.profession : ""
                   }`}
                 />
                 {/* <span style={{postion:'relative'}} >{ThreeDots()}</span> */}
