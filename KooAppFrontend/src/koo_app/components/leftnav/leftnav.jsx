@@ -2,10 +2,12 @@ import "./leftnav.css";
 import * as React from "react";
 import { IconChip } from "./styledComp.jsx";
 import { Link } from "react-router-dom";
-import {useSelector} from "react-redux";
-
+import {useSelector, useDispatch} from "react-redux";
+import { Is_Auth } from "../../../redux/Actions";
 export const LeftNav = () => {
   const {IsAuth,User} = useSelector((store) => store);
+  const dispatch=useDispatch();
+  
   return (
     <div className="leftnav">
         <div className="logo">
@@ -26,7 +28,9 @@ export const LeftNav = () => {
         tag="Notification"
       />
       <Link to="/">
-        <IconChip icon={"/assets/images/logout.svg"} tag="Logout" />
+        <IconChip onClick={()=>{
+          dispatch(Is_Auth(false));
+        }} icon={"/assets/images/logout.svg"} tag="Logout" />
       </Link>
 
       <Link to="/create">

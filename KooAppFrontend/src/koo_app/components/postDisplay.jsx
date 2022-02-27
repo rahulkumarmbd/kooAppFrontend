@@ -10,12 +10,14 @@ import { red } from "@mui/material/colors";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {ThreeDots} from './utilityComp.jsx'
+import {useSelector} from 'react-redux'
+import {Navigate} from 'react-router-dom'
 
 export default function RecipeReviewCard() {
   const [posts, setPosts] = useState([]);
   // Toggling Like and Dislike by below state
   const [toggleLike, setToggleLike] = useState(false); 
-  
+  const { IsAuth, User } = useSelector((store) => store);
   useEffect(() => {
     axios.get("https://kooappclone.herokuapp.com/posts").then(({ data }) => {
       setPosts(data.reverse());
@@ -29,7 +31,9 @@ export default function RecipeReviewCard() {
   async function likeHandle(like,id){
     await axios.patch(`https://kooappclone.herokuapp.com/posts/${id}`,{likes: toggleLike && like>0? --like:++like}).then(setToggleLike(!toggleLike))
   }
-  
+  if (!IsAuth) {
+    return <Navigate to="/login" />;
+  }
   return (
     <div>
       {posts.length
