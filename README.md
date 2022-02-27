@@ -3,7 +3,7 @@ This project is made for educational purpose
 
 <hr/>
 
-<img src="https://github.com/mujhusain/koo-app-clone/raw/main/ReadmeImg/Koo-app.jpg"/>
+<img src="https://github.com/mujhusain/koo-app-clone/raw/develop-muj/ReadmeImg/Koo-app.jpg"/>
 
 ## About Us
 In the course of the fifth unit here at Masai School, we learned about React and Redux
@@ -41,15 +41,15 @@ You will also find millions of others from all walks of life. Koo is home to the
 
 1. Landing Page
 
-<img src="https://github.com/mujhusain/koo-app-clone/raw/main/ReadmeImg/img%201.jpg"/>
+<img src="https://github.com/mujhusain/koo-app-clone/raw/develop-muj/ReadmeImg/img%201.jpg"/>
 
 2. Login Page
 
-<img src="https://github.com/mujhusain/koo-app-clone/raw/main/ReadmeImg/img%202.jpg"/>
+<img src="https://github.com/mujhusain/koo-app-clone/raw/develop-muj/ReadmeImg/img%202.jpg"/>
 
 3. Feed Page
 
-<img src="https://github.com/mujhusain/koo-app-clone/raw/main/ReadmeImg/img%203.jpg"/>
+<img src="https://github.com/mujhusain/koo-app-clone/raw/develop-muj/ReadmeImg/img%203.jpg"/>
 
 4. My Profile
 
