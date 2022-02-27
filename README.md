@@ -57,5 +57,6 @@ You will also find millions of others from all walks of life. Koo is home to the
 
 <hr/>
 
+#### [☁ Project Backend Repo link](https://github.com/rahulkumarmbd/koo-backend)
 #### [📝 How we clone this website in 5 days](https://medium.com/@alakmodak/the-journey-of-building-koo-app-3fe3352d2bd7)
 #### [☁ Live link](https://kooappclone.netlify.app/)
