@@ -1,33 +1,43 @@
 import "./style.css";
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { KooPostDone } from "./postDoneFeedback.jsx";
+import { Navigate } from "react-router-dom";
 
 export const CreatePost = () => {
   const [selectedImage, setSelectedImage] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState([]);
   const [desc, setDesc] = useState("");
+  const [posted, setPosted] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+  const { IsAuth, User } = useSelector((store) => store);
+
   const postData = () => {
+    var formData = new FormData();
+    formData.append("userId", User);
+    formData.append("postImgs", selectedImage);
+    formData.append("description", desc);
     axios
-      .post("https://kooappclone.herokuapp.com/posts", {
-        userId: "62164f6597c96bb81c23f8bb",
-        description: desc,
-        postImgs: selectedImage || selectedVideo,
-        likes: 0,
-        comments: [],
+      .post(`https://kooappclone.herokuapp.com/posts/`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       })
       .then((res) => {
         setLoading(true);
         console.log("Your data is posted", res);
-        // Hare write code to redirect on feed page after post success
+        setPosted(true);
       })
       .catch((err) => console.log(err));
   };
-
-  return loading? (<KooPostDone />) :(
+if(posted){
+  return <Navigate to="/feed" />;
+}
+  return loading ? (
+    <KooPostDone />
+  ) : (
     <div className="main-container">
       <div className="top-nevigation">
         <div className="left-icons">

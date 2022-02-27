@@ -59,12 +59,16 @@
     width: 40%;
     margin: 1.5rem 42% 0.8rem;
 }
-.selectDiv > img {    
-    width: 13%;
-    /* height: 2rem; */
+
+.upload-img{
+    width: 18%;
     margin-right: 3%;
 }
-
+#camera-icon{
+    position: relative;
+    left: -8vw;
+    height:90%;
+}
 .userDataDiv{
     display: flex;
 }
