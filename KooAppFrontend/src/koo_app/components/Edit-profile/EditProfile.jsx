@@ -4,16 +4,19 @@ import { InputBox2 } from "./inputBox2";
 import { useRef, useState, useEffect } from "react";
 import { Input } from "./input";
 import { useSelector } from "react-redux";
-import { useNavigate,Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
+import FormData from "form-data";
 
 export function EditProfile() {
   const showComponent = useRef();
   const showComponent2 = useRef();
   const showInput = useRef([]);
   const [user, setUser] = useState({});
+  const [selectedImage, setSelectedImage] = useState([]);
   const { IsAuth, User } = useSelector((store) => store);
   const navigate = useNavigate();
+  const [newPic, setNewPic] = useState(false);
 
   const handleInput = (i) => {
     showInput.current[i].style.display = "block";
@@ -27,13 +30,30 @@ export function EditProfile() {
     showComponent2.current.style.display = "block";
   };
 
+  console.log("above useefect", selectedImage);
   useEffect(() => {
+  
     axios
       .get(`https://kooappclone.herokuapp.com/users/${User}`)
       .then(({ data }) => {
         setUser(data);
       });
-  }, []);
+  }, [newPic]);
+
+  function postData() {
+    var formData = new FormData();
+    formData.append("profilePic", selectedImage);
+    axios
+      .patch(`https://kooappclone.herokuapp.com/users/${User}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setNewPic((prev)=>!prev)
+      });
+  }
 
   const userData = [
     {
@@ -114,8 +134,8 @@ export function EditProfile() {
     },
   ];
 
-  if(!IsAuth){
-    return <Navigate to="/"/>
+  if (!IsAuth) {
+    return <Navigate to="/" />;
   }
 
   return (
@@ -135,8 +155,26 @@ export function EditProfile() {
             <div className="nameDiv">
               <p>guest_UUFMK</p>
               <div className="selectDiv">
-                <img src="/assets/editProfileImages/browse.svg" />
-                <img src="/assets/editProfileImages/camera.svg" />
+                <input
+                  type="file"
+                  id="upload-btn"
+                  onChange={(event) => {
+                    setSelectedImage(event.target.files[0]);
+                    postData();
+                  }}
+                  style={{ display: "none" }}
+                />
+                <label htmlFor="upload-btn">
+                  <img
+                    className="upload-img"
+                    src="/assets/editProfileImages/browse.svg"
+                  />
+                </label>
+
+                <img
+                  id="camera-icon"
+                  src="/assets/editProfileImages/camera.svg"
+                />
               </div>
             </div>
           </div>
