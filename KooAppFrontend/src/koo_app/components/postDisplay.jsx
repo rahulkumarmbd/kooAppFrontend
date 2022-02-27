@@ -28,7 +28,7 @@ export default function RecipeReviewCard() {
     likeHandle(like, id)
   },[])
 
-  async function likeHandle(like,id){
+async function likeHandle(like,id){
     await axios.patch(`https://kooappclone.herokuapp.com/posts/${id}`,{likes: toggleLike && like>0? --like:++like}).then(setToggleLike(!toggleLike))
   }
   if (!IsAuth) {
@@ -58,16 +58,16 @@ export default function RecipeReviewCard() {
                     >
                       <img
                         height="50px"
-                        src={post.userId.profilePic}
+                        src={post.userId.profilePic || 'https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg'}
                         alt="userImage"
                       />
                     </Avatar>
                   }
-                  title={post.userId.name}
+                  title={post.userId.name != "null" ? post.userId.name : "New User"}
                   subheader={`@${
-                    post.userId.handle != null ? post.userId.handle : "username"
-                  } - ${
-                    post.userId.profession != null ? post.userId.profession : ""
+                    post.userId.handle != "null" ? post.userId.handle : "username"
+                  }  ${
+                    post.userId.profession != "null" ? post.userId.profession : ""
                   }`}
                 />
                 {/* <span style={{postion:'relative'}} >{ThreeDots()}</span> */}

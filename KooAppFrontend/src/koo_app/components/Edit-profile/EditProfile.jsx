@@ -38,7 +38,7 @@ export function EditProfile() {
         setUser(data);
       });
   }, [newPic]);
-
+console.log("profile pic page patch")
   function postData() {
     var formData = new FormData();
     formData.append("profilePic", image.current);
